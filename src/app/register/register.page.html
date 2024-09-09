@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="create-account-container">
+
+    <h2 class="ion-text-center">Regístrate</h2>
+
+    <!-- Campo de Nombre -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" required [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+
+    <!-- Campo de Apellido -->
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" required [(ngModel)]="lastName"></ion-input>
+    </ion-item>
+
+    <!-- Campo de Correo Electrónico -->
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" required [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <!-- Campo de Nombre de Usuario -->
+    <ion-item>
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input type="text" maxlength="8" minlength="3" required [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <!-- Campo de Contraseña -->
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [type]="passwordType" required [(ngModel)]="password"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()">
+        <ion-icon [name]="passwordIcon"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!-- Campo de Pregunta de Seguridad -->
+    <ion-item lines="none" class="security-question-item">
+      <ion-label position="stacked">Pregunta de Seguridad</ion-label>
+      <ion-select placeholder="Selecciona una pregunta" [(ngModel)]="securityQuestion">
+        <ion-select-option value="colorFavorito">¿Cuál es tu color favorito?</ion-select-option>
+        <ion-select-option value="mascotaInfancia">¿Cómo se llamaba tu primera mascota?</ion-select-option>
+        <ion-select-option value="ciudadNacimiento">¿En qué ciudad naciste?</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <!-- Campo de Respuesta de Seguridad -->
+    <ion-item>
+      <ion-label position="floating">Respuesta de Seguridad</ion-label>
+      <ion-input type="text" required [(ngModel)]="securityAnswer"></ion-input>
+    </ion-item>
+
+    <!-- Botones -->
+    <ion-button expand="block" color="primary" (click)="register()" [disabled]="!isFormValid()">REGISTRARSE</ion-button>
+    <ion-button expand="block" fill="clear" color="secondary" (click)="cancel()">CANCELAR</ion-button>
+
+  </div>
+</ion-content>
+
+<!-- Pie de página -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-text class="ion-text-center">
+      <p class="ion-text-center">&copy; 2024. Todos los derechos reservados.</p>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>

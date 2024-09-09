@@ -1,0 +1,103 @@
+.create-account-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+ion-item {
+    --background: #333;
+    --color: white;
+    --border-color: #444;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Espaciado aumentado entre los campos */
+    padding: 10px 0; /* Ajuste de padding para más espacio interno */
+}
+
+ion-label {
+    color: #bbb; /* Color del texto de las etiquetas */
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-datepicker-toggle {
+    color: #1e90ff;
+}
+
+input {
+    color: white; /* Color del texto del input */
+}
+
+ion-button {
+    margin-top: 20px;
+    --background: #1e90ff;
+    --background-hover: #1c7ed6;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+ion-button[fill="clear"] {
+    color: #ccc;
+}
+
+.datepicker-item {
+    --background: #333; /* Mismo color de fondo que los otros campos */
+    --border-color: #444; /* Color del borde para consistencia */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio entre los campos */
+    display: flex;
+    align-items: center;
+    position: relative; /* Para posicionar bien el ícono */
+}
+
+.datepicker-item ion-input {
+    --color: white;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    width: 100%; /* Ocupa el 100% del espacio disponible */
+}
+
+.mat-datepicker-toggle {
+    position: absolute;
+    right: 10px; /* Mueve el ícono a la derecha */
+    bottom: 10px; /* Alinea el ícono al campo de entrada */
+    color: white;
+}
+
+.mat-datepicker-toggle button {
+    background-color: transparent; /* Sin fondo para el botón */
+    color: white; /* Color del ícono del calendario */
+}
+
+
+.security-question-item {
+    --background: #333;
+    --border-color: #444;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Espaciado entre otros campos */
+}
+
+.security-question-item ion-label {
+    margin-bottom: 8px; /* Espaciado debajo de la etiqueta */
+    color: #bbb;
+}
+
+ion-select {
+    color: white; /* Color del texto en el select */
+}
+
+ion-select-option {
+    --color: white; /* Color de las opciones */
+    --background: #333; /* Fondo de las opciones */
+}
+

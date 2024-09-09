@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Contenido del encabezado dentro del contenido -->
+  <div class="header-content ion-padding">
+    <h1 class="ion-text-center" style="font-size: 2.5rem;">Titulo</h1>
+  </div>
+
+  <!-- Contenedor de inicio de sesión -->
+  <div class="login-container ion-margin-top">
+    <h2 class="ion-text-center" style="font-size: 1.8rem;">¡Bienvenido!</h2>
+
+    <!-- Campo de Usuario -->
+    <ion-item lines="full">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input 
+        type="text" 
+        maxlength="20" 
+        minlength="3" 
+        required 
+        [(ngModel)]="username" 
+        pattern="[a-zA-Z0-9]*"
+        #usernameInput="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+      <p class="ion-padding-start">El usuario debe ser alfanumérico y tener entre 3 y 8 caracteres.</p>
+    </ion-text>
+
+    <!-- Campo de Contraseña -->
+    <ion-item lines="full" class="password-item" style="margin-top: 15px;">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input 
+        [type]="passwordType" 
+        maxlength="15" 
+        required 
+        [(ngModel)]="password" 
+        #passwordInput="ngModel">
+      </ion-input>
+      <ion-button fill="clear" class="toggle-password" (click)="togglePasswordVisibility()" slot="end" style="margin-right: 10px;">
+        <ion-icon [name]="passwordIcon"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-text color="danger" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+      <p class="ion-padding-start">La contraseña debe tener al menos 4 caracteres, incluyendo una letra, un número y un símbolo.</p>
+    </ion-text>
+
+    <!-- Botón de Ingreso -->
+    <ion-button 
+      fill="solid" 
+      expand="block" 
+      color="primary" 
+      (click)="login()" 
+      [disabled]="!usernameInput.valid || !passwordInput.valid" 
+      style="margin-top: 20px; font-weight: bold;">
+      Ingresar
+    </ion-button>
+
+    <!-- Enlace para entrar a home sin cuenta -->
+    <ion-text class="ion-text-center">
+      <p>
+        <a (click)="goToInvitado()" class="create-account-link" style="color: #1e90ff;">Ingresar como invitado</a>
+      </p>
+    </ion-text>
+
+    <!-- Enlace para crear cuenta -->
+    <ion-text class="ion-text-center">
+      <p>
+        <a (click)="goToRegister()" class="create-account-link" style="color: #1e90ff;">Crea tu cuenta gratis</a>
+      </p>
+    </ion-text>
+
+    <!-- Enlace para restablecer contraseña -->
+    <ion-text class="ion-text-center">
+      <p>
+        <a (click)="goToResetPassword()" class="forgot-password-link" style="color: #1e90ff;">¿Olvidaste tu contraseña?</a>
+      </p>
+    </ion-text>
+  </div>
+</ion-content>
+
+<!-- Pie de página -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-text class="ion-text-center">
+      <p class="ion-text-center">&copy; 2024. Todos los derechos reservados.</p>
+    </ion-text>
+  </ion-toolbar>
+</ion-footer>
