@@ -1,13 +1,76 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>comentarios</ion-title>
+    <ion-title class="ion-text-center">Deja tu Comentario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">comentarios</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()" class="create-comment-container">
+
+    <!-- Inline Alert de validación -->
+    <div *ngIf="formSubmitted && !comentarioForm.valid" class="alert alert-danger">
+      Todos los campos son obligatorios y deben estar correctamente llenados.
+    </div>
+
+    <!-- Inline Alert de confirmación -->
+    <div *ngIf="formSubmitted && comentarioForm.valid" class="alert alert-success">
+      ¡Comentario enviado exitosamente!
+    </div>
+
+    <!-- Campo de Nombre de la Tienda -->
+    <ion-item>
+      <ion-label position="floating">Nombre de la Tienda</ion-label>
+      <ion-input type="text" formControlName="nombreTienda" required></ion-input>
+    </ion-item>
+
+    <!-- Campo de Dirección -->
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input type="text" formControlName="direccion" required></ion-input>
+    </ion-item>
+
+    <!-- Campo de Fecha -->
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <mat-form-field appearance="fill">
+        <mat-icon matPrefix>Selecciona la fecha</mat-icon>
+        <input matInput [matDatepicker]="picker" formControlName="fechaHora" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </ion-item>
+
+    <!-- Campo de Tipo de Queja -->
+    <ion-item>
+      <ion-label position="floating">Tipo de Queja</ion-label>
+      <mat-form-field appearance="fill">
+        <mat-select placeholder="Selecciona una opción" formControlName="tipoQueja" required>
+          <mat-option value="servicio">Servicio</mat-option>
+          <mat-option value="producto">Producto</mat-option>
+          <mat-option value="otro">Otro</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ion-item>
+
+    <!-- Campo de Descripción -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion" required></ion-textarea>
+    </ion-item>
+
+    <!-- Evaluación por Estrellas -->
+    <ion-item>
+      <ion-label position="stacked">Evaluación</ion-label>
+      <ion-range min="1" max="5" step="1" snaps="true" ticks="true" formControlName="evaluacion">
+        <ion-icon slot="start" name="star-outline"></ion-icon>
+        <ion-icon slot="end" name="star"></ion-icon>
+      </ion-range>
+      <ion-text>{{ comentarioForm.get('evaluacion')?.value }} Estrellas</ion-text>
+    </ion-item>
+
+    <!-- Botones -->
+    <ion-button expand="block" color="primary" type="submit" [disabled]="!comentarioForm.valid">Enviar Comentario</ion-button>
+    <ion-button expand="block" fill="clear" color="secondary" type="button" (click)="clearForm()">Limpiar</ion-button>
+
+  </form>
 </ion-content>
