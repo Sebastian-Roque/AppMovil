@@ -36,7 +36,7 @@
         <h2>{{ sucursal.nombre }}</h2>
         <p>{{ sucursal.direccion }}</p>
         <ion-badge color="primary">{{ sucursal.estrellas }} estrellas</ion-badge>
-        <ion-button fill="outline" (click)="viewComments(sucursal)">Ver Comentarios</ion-button>
+        <ion-button fill="outline" (click)="goToVerComentario(sucursal.id)">Ver Comentarios</ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

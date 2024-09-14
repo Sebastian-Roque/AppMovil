@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comentarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Comentarios de la sucursal</h2>
+
+  <ion-list *ngIf="comentarios && comentarios.length > 0">
+    <ion-item *ngFor="let comentario of comentarios">
+      <ion-label>
+        <h3>Comentario:</h3>
+        <p>{{ comentario.texto }}</p>
+        <p><strong>Evaluación:</strong> {{ comentario.evaluacion }} estrellas</p>
+        <p><strong>Fecha:</strong> {{ comentario.fecha }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="comentarios.length === 0">
+    <p>No hay comentarios para esta sucursal.</p>
+  </div>
+</ion-content>

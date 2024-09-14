@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';  // Importa NavController
 import { SucursalService } from '../../services/sucursal.service';  
 
 @Component({
@@ -12,7 +13,7 @@ export class SucursalPage implements OnInit {
   searchTerm: string = '';
   sortOrder: string = '';  // Inicializamos el filtro vacío
 
-  constructor(private sucursalService: SucursalService) {}
+  constructor(private sucursalService: SucursalService, private navCtrl: NavController) {}
 
   ngOnInit() {
     this.getSucursales();  
@@ -44,7 +45,8 @@ export class SucursalPage implements OnInit {
     this.getSucursales();  // Recargar las sucursales sin filtro
   }
 
-  viewComments(sucursal: any) {
-    console.log('Ver comentarios de la sucursal:', sucursal);
+
+  goToVerComentario(sucursalId: number) {
+    this.navCtrl.navigateForward(`/ver-comentario/${sucursalId}`);
   }
 }

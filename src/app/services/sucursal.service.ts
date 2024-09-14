@@ -40,4 +40,11 @@ export class SucursalService {
     
     return of(sortedSucursales);
   }
+
+  // Obtener los comentarios por ID de sucursal
+  getComentariosBySucursal(sucursalId: number): Observable<any> {
+    const sucursal = this.sucursales.find(s => s.id === sucursalId);
+    return of(sucursal ? sucursal.comentarios : []);  // Devuelve los comentarios si la sucursal existe
+  }
+  
 }

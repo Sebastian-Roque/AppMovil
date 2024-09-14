@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'configuracion',
     loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },  {
+    path: 'ver-comentario',
+    loadChildren: () => import('./ver-comentario/ver-comentario.module').then( m => m.VerComentarioPageModule)
   },
+
 ];
 
 @NgModule({
