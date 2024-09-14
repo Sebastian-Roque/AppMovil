@@ -9,3 +9,41 @@
 .custom-searchbar .searchbar-input {
     font-size: 16px;  /* Ajustar el tamaño de la fuente si lo deseas */
 }
+
+ion-item {
+    flex: 1;
+}
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.custom-searchbar {
+    flex: 1;
+    margin-right: 10px;
+    height: 50px; /* Controlar el largo del buscador */
+}
+
+.custom-filter {
+    flex: 0 0 auto;
+    height: 50px; /* Controlar el largo del filtro */
+    display: flex;
+    align-items: center;
+}
+
+  /* Mantener el filtro con un ancho fijo */
+.filter-select {
+    width: 30px; /* Ancho fijo para el botón de filtro */
+}
+
+  /* Ocultar el texto seleccionado en el ion-select */
+.filter-select::part(text) {
+    display: none; /* Ocultar completamente el texto */
+}
+
+  /* Mantener visible el placeholder */
+.filter-select::part(placeholder) {
+    color: black; /* Color normal del placeholder */
+}

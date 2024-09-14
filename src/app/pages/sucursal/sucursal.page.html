@@ -1,31 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <!-- Botón de retroceso -->
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-
-    <ion-title>Lista de Sucursales</ion-title>
-
-    <ion-buttons slot="end">
-      <ion-select (ionChange)="onSortChange($event)">
-        <ion-select-option value="asc">Ascendente (Estrellas)</ion-select-option>
-        <ion-select-option value="desc">Descendente (Estrellas)</ion-select-option>
-      </ion-select>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <h2 class="ion-text-center">Lista de sucursales</h2>
 
-  <!-- Buscador -->
-  <ion-searchbar
-    [(ngModel)]="searchTerm"
-    (ionInput)="filterSucursales($event)"
-    placeholder="Buscar sucursales"
-    class="custom-searchbar">
-  </ion-searchbar>
+  <!-- Contenedor con estilo Flexbox para el buscador y filtro -->
+  <div class="search-filter-container">
+    <!-- Buscador -->
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterSucursales($event)"
+      placeholder="Buscar sucursales"
+      class="custom-searchbar">
+    </ion-searchbar>
+
+    <!-- Filtro con ícono de filtro -->
+    <ion-item class="custom-filter">
+      <ion-icon name="filter-outline" slot="start"></ion-icon>
+      <ion-select interface="popover" [(ngModel)]="sortOrder" (ionChange)="onSortChange($event)" class="filter-select">
+        <ion-select-option value="asc">Ascendente (Estrellas)</ion-select-option>
+        <ion-select-option value="desc">Descendente (Estrellas)</ion-select-option>
+        <ion-select-option (click)="clearFilter()">Limpiar</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </div>
+
+  <br>
 
   <ion-list *ngIf="filteredSucursales && filteredSucursales.length > 0">
     <ion-item *ngFor="let sucursal of filteredSucursales">

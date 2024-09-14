@@ -13,27 +13,23 @@ export class SucursalService {
 
   constructor() {}
 
-  getSucursalByName(nombreTienda: string): Observable<any> {
-    const sucursal = this.sucursales.find(sucursal => sucursal.nombre.toLowerCase() === nombreTienda.toLowerCase());
+  // Obtener sucursal por su ID
+  getSucursalById(sucursalId: number): Observable<any> {
+    const sucursal = this.sucursales.find(s => s.id === sucursalId);
     return of(sucursal);
   }
 
-  createSucursal(nuevaSucursal: any): Observable<any> {
-    nuevaSucursal.id = this.sucursales.length + 1; 
-    nuevaSucursal.comentarios = [];
-    this.sucursales.push(nuevaSucursal); 
-    return of(nuevaSucursal);
-  }
-
+  // Añadir comentario a una sucursal existente
   addCommentToSucursal(sucursalId: number, comentario: any): Observable<any> {
     const sucursal = this.sucursales.find(s => s.id === sucursalId);
     if (sucursal) {
-      sucursal.comentarios.push(comentario);
+      sucursal.comentarios.push(comentario); // Añadir el comentario a la sucursal
     }
     return of(comentario); 
   }
 
-  getSucursales(sortOrder: string): Observable<any[]> {
+  // Obtener lista de sucursales con opción de ordenar por estrellas
+  getSucursales(sortOrder: string = ''): Observable<any[]> {
     let sortedSucursales = [...this.sucursales];
     
     if (sortOrder === 'asc') {

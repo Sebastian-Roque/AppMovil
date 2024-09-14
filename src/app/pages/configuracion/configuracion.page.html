@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Configuración</h2>
+  <br>
+
+  <ion-list>
+    <!-- Opción 1: Perfil -->
+    <ion-item>
+      <ion-label class="ion-text-center">Perfil</ion-label>
+    </ion-item>
+    <!-- Opción 2: Accesibilidad -->
+    <ion-item>
+      <ion-label class="ion-text-center">Accesibilidad</ion-label>
+    </ion-item>
+    <!-- Opción 3: Servicios -->
+    <ion-item>
+      <ion-label class="ion-text-center">Servicios</ion-label>
+    </ion-item>
+    <!-- Opción 4: ¿Quiénes Somos? -->
+    <ion-item>
+      <ion-label class="ion-text-center">¿Quiénes Somos?</ion-label>
+    </ion-item>
+    <!-- Opción 5: Ayuda al cliente -->
+    <ion-item>
+      <ion-label class="ion-text-center">Ayuda al cliente</ion-label>
+    </ion-item>
+    <!-- Opción 6: Permisos -->
+    <ion-item>
+      <ion-label class="ion-text-center">Permisos</ion-label>
+    </ion-item>
+
+    <!-- Opción 7: Iniciar sesión si es invitado -->
+    <ion-item *ngIf="!isLoggedIn" (click)="goToLogin()">
+      <ion-label class="ion-text-center">Iniciar Sesión</ion-label>
+    </ion-item>
+
+    <!-- Opción 8: Cerrar sesión si hay un usuario activo -->
+    <ion-item *ngIf="isLoggedIn" (click)="logOut()">
+      <ion-label class="ion-text-center">Cerrar Sesión</ion-label>
+    </ion-item>
+
+    <!-- Opción 9: Salir de la app -->
+    <ion-item>
+      <ion-label class="ion-text-center">Salir</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

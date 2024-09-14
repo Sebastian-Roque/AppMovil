@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SucursalService } from '../../services/sucursal.service';  
-import { NavController } from '@ionic/angular';  // Importar NavController
 
 @Component({
   selector: 'app-sucursal',
@@ -11,18 +10,14 @@ export class SucursalPage implements OnInit {
   sucursales: any[] = [];
   filteredSucursales: any[] = [];
   searchTerm: string = '';
-  sortOrder: string = 'asc';  
+  sortOrder: string = '';  // Inicializamos el filtro vacío
 
-  constructor(
-    private sucursalService: SucursalService, 
-    private navCtrl: NavController  // Inyectar NavController
-  ) {}
+  constructor(private sucursalService: SucursalService) {}
 
   ngOnInit() {
     this.getSucursales();  
   }
 
-  // Método para obtener las sucursales con un parámetro de orden
   getSucursales() {
     this.sucursalService.getSucursales(this.sortOrder).subscribe((data) => {
       this.sucursales = data;
@@ -30,7 +25,6 @@ export class SucursalPage implements OnInit {
     });
   }
 
-  // Filtro de sucursales basado en el término de búsqueda
   filterSucursales(event: any) {
     const searchValue = event.target.value.toLowerCase();
     this.filteredSucursales = this.sucursales.filter((sucursal) =>
@@ -39,15 +33,15 @@ export class SucursalPage implements OnInit {
     );
   }
 
-  // Método para manejar el cambio de orden
   onSortChange(event: any) {
     this.sortOrder = event.detail.value;
     this.getSucursales();  
   }
 
-  // Método para regresar a la página anterior
-  goBack() {
-    this.navCtrl.back();  // Regresar a la página anterior en el historial
+  // Método para limpiar el filtro
+  clearFilter() {
+    this.sortOrder = '';  // Restablecer el filtro
+    this.getSucursales();  // Recargar las sucursales sin filtro
   }
 
   viewComments(sucursal: any) {

@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { AjustesPageRoutingModule } from './ajustes-routing.module';
-
-import { AjustesPage } from './ajustes.page';
+import { ConfiguracionPageRoutingModule } from './configuracion-routing.module';
+import { ConfiguracionPage } from './configuracion.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AjustesPageRoutingModule
+    ConfiguracionPageRoutingModule
   ],
-  declarations: [AjustesPage]
+  declarations: [ConfiguracionPage]
 })
-export class AjustesPageModule {}
+export class ConfiguracionPageModule {}

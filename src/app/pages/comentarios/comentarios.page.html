@@ -1,10 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="ion-text-center">Deja tu Comentario</ion-title>
-  </ion-toolbar>
+  <ion-toolbar></ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <h2 class="ion-text-center">Deja tu comentario</h2>
+
+  <br>
+
   <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()" class="create-comment-container">
 
     <!-- Inline Alert de validación -->
@@ -17,23 +19,28 @@
       ¡Comentario enviado exitosamente!
     </div>
 
-    <!-- Campo de Nombre de la Tienda -->
+    <!-- Campo de Sucursal (Combo Box) -->
     <ion-item>
-      <ion-label position="floating">Nombre de la Tienda</ion-label>
-      <ion-input type="text" formControlName="nombreTienda" required></ion-input>
+      <ion-label position="floating">Sucursal</ion-label>
+      <mat-form-field appearance="fill">
+        <mat-select placeholder="Selecciona una sucursal" formControlName="sucursal" required (selectionChange)="onSucursalChange($event)">
+          <mat-option *ngFor="let sucursal of sucursales" [value]="sucursal.id">
+            {{ sucursal.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </ion-item>
 
-    <!-- Campo de Dirección -->
+    <!-- Campo de Dirección (bloqueado si la sucursal es seleccionada) -->
     <ion-item>
       <ion-label position="floating">Dirección</ion-label>
-      <ion-input type="text" formControlName="direccion" required></ion-input>
+      <ion-input type="text" formControlName="direccion" [disabled]="direccionBloqueada"></ion-input>
     </ion-item>
 
-    <!-- Campo de Fecha -->
+    <!-- Campo de Fecha (calendario con etiqueta flotante) -->
     <ion-item>
-      <ion-label position="floating">Fecha</ion-label>
+      <ion-label position="floating">Fecha de Visita</ion-label>
       <mat-form-field appearance="fill">
-        <mat-icon matPrefix>Selecciona la fecha</mat-icon>
         <input matInput [matDatepicker]="picker" formControlName="fechaHora" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>

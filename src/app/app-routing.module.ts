@@ -32,12 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/comentarios/comentarios.module').then( m => m.ComentariosPageModule)
   },
   {
-    path: 'configuracion',
-    loadChildren: () => import('./pages/ajustes/ajustes.module').then( m => m.AjustesPageModule)
-  },
-  {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'configuracion',
+    loadChildren: () => import('./pages/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
   },
 ];
 
