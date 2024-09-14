@@ -1,0 +1,11 @@
+.custom-searchbar {
+    --background: #797979; /* Color de fondo */
+    --color: #f7f7f7;         /* Color del texto */
+    --placeholder-color: #ffffff; /* Color del texto del placeholder */
+    --icon-color: #333;    /* Color del ícono de la lupa */
+    --cancel-button-color: #ff4081; /* Color del botón de cancelar */
+}
+
+.custom-searchbar .searchbar-input {
+    font-size: 16px;  /* Ajustar el tamaño de la fuente si lo deseas */
+}

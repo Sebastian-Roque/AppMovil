@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
     <ion-title>Lista de Sucursales</ion-title>
+
     <ion-buttons slot="end">
       <ion-select (ionChange)="onSortChange($event)">
         <ion-select-option value="asc">Ascendente (Estrellas)</ion-select-option>
@@ -10,9 +16,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list *ngIf="sucursales && sucursales.length > 0">
-    <ion-item *ngFor="let sucursal of sucursales">
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Lista de sucursales</h2>
+
+  <!-- Buscador -->
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionInput)="filterSucursales($event)"
+    placeholder="Buscar sucursales"
+    class="custom-searchbar">
+  </ion-searchbar>
+
+  <ion-list *ngIf="filteredSucursales && filteredSucursales.length > 0">
+    <ion-item *ngFor="let sucursal of filteredSucursales">
       <ion-label>
         <h2>{{ sucursal.nombre }}</h2>
         <p>{{ sucursal.direccion }}</p>
